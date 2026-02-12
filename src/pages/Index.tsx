@@ -78,7 +78,7 @@ const Index = () => {
               Character Details
             </h2>
             <p className="text-sm text-muted-foreground mb-6">
-              Upload a reference photo and describe the historical character
+              Upload a reference portrait and describe the clothing to extend into a full-body image
             </p>
             <CharacterForm onSubmit={handleGenerate} isLoading={isLoading} />
           </div>
