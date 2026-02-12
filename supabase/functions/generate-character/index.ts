@@ -7,38 +7,27 @@ const corsHeaders = {
 };
 
 function buildPrompt(fields: Record<string, string>): string {
-  const {
-    characterName,
-    roleOccupation,
-    timePeriod,
-    clothingDescriptors,
-    material,
-    posture,
-    optionalOutfitSentence,
-  } = fields;
+  const { clothingDescriptors, outfitDescriptionSentence } = fields;
 
-  let prompt = `Using the uploaded reference image for facial likeness, generate a full-body, photorealistic image of ${characterName}, a ${roleOccupation} from ${timePeriod}.
+  let prompt = `Using the uploaded reference image for facial likeness, generate a full-body, photorealistic image.
 
 The character must:
 - Maintain consistent facial features from the reference image.
 - Wear historically accurate clothing including: ${clothingDescriptors}.`;
 
-  if (material) {
-    prompt += `\n- Clothing material should appear as ${material}.`;
+  if (outfitDescriptionSentence) {
+    prompt += `\n- ${outfitDescriptionSentence}`;
   }
 
-  prompt += `\n- Be posed ${posture}.
-- Stand on a plain white background (seamless studio white).
+  prompt += `
+- Stand in a neutral upright position.
+- Stand on a seamless plain white background.
 - No objects.
 - No modern elements.
 - No logos.
 - No text.
-- Neutral lighting.
-- High realism.`;
-
-  if (optionalOutfitSentence) {
-    prompt += `\n\nAdditional notes: ${optionalOutfitSentence}.`;
-  }
+- Neutral studio lighting.
+- High realism suitable for later 3D modelling.`;
 
   return prompt;
 }

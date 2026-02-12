@@ -16,13 +16,10 @@ const CharacterForm = ({ onSubmit, isLoading }: CharacterFormProps) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const [fields, setFields] = useState({
-    characterName: "",
     timePeriod: "",
     roleOccupation: "",
     clothingDescriptors: "",
-    material: "",
-    posture: "",
-    optionalOutfitSentence: "",
+    outfitDescriptionSentence: "",
   });
 
   const updateField = (key: string, value: string) => {
@@ -49,18 +46,16 @@ const CharacterForm = ({ onSubmit, isLoading }: CharacterFormProps) => {
 
   const isValid =
     referenceBase64 &&
-    fields.characterName &&
     fields.timePeriod &&
     fields.roleOccupation &&
-    fields.clothingDescriptors &&
-    fields.posture;
+    fields.clothingDescriptors;
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
       {/* Reference Image Upload */}
       <div>
         <Label className="text-sm font-semibold tracking-wide uppercase text-muted-foreground mb-2 block">
-          Reference Image
+          Reference Image *
         </Label>
         <div
           onClick={() => fileInputRef.current?.click()}
@@ -91,15 +86,6 @@ const CharacterForm = ({ onSubmit, isLoading }: CharacterFormProps) => {
       {/* Text Fields */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <Label htmlFor="characterName">Character Name *</Label>
-          <Input
-            id="characterName"
-            value={fields.characterName}
-            onChange={(e) => updateField("characterName", e.target.value)}
-            placeholder="e.g. Elizabeth Fry"
-          />
-        </div>
-        <div>
           <Label htmlFor="timePeriod">Time Period *</Label>
           <Input
             id="timePeriod"
@@ -117,24 +103,6 @@ const CharacterForm = ({ onSubmit, isLoading }: CharacterFormProps) => {
             placeholder="e.g. Prison Reformer"
           />
         </div>
-        <div>
-          <Label htmlFor="material">Material (optional)</Label>
-          <Input
-            id="material"
-            value={fields.material}
-            onChange={(e) => updateField("material", e.target.value)}
-            placeholder="e.g. Wool and linen"
-          />
-        </div>
-        <div className="sm:col-span-2">
-          <Label htmlFor="posture">Posture *</Label>
-          <Input
-            id="posture"
-            value={fields.posture}
-            onChange={(e) => updateField("posture", e.target.value)}
-            placeholder="e.g. Standing upright, holding a book"
-          />
-        </div>
       </div>
 
       <div>
@@ -149,14 +117,14 @@ const CharacterForm = ({ onSubmit, isLoading }: CharacterFormProps) => {
       </div>
 
       <div>
-        <Label htmlFor="optionalOutfitSentence">
-          Additional Outfit Notes (optional)
+        <Label htmlFor="outfitDescriptionSentence">
+          Outfit Description Sentence (optional)
         </Label>
         <Textarea
-          id="optionalOutfitSentence"
-          value={fields.optionalOutfitSentence}
+          id="outfitDescriptionSentence"
+          value={fields.outfitDescriptionSentence}
           onChange={(e) =>
-            updateField("optionalOutfitSentence", e.target.value)
+            updateField("outfitDescriptionSentence", e.target.value)
           }
           placeholder="e.g. Quaker-style clothing, simple and unadorned"
           rows={2}
