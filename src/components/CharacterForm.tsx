@@ -106,12 +106,14 @@ const CharacterForm = ({ onSubmit, isLoading }: CharacterFormProps) => {
       </div>
 
       <div>
-        <Label htmlFor="clothingDescriptors">Clothing Description *</Label>
+        <Label htmlFor="clothingDescriptors">
+          Clothing Keywords (5 words or short phrases, comma separated) *
+        </Label>
         <Textarea
           id="clothingDescriptors"
           value={fields.clothingDescriptors}
           onChange={(e) => updateField("clothingDescriptors", e.target.value)}
-          placeholder="e.g. A long dark grey dress with a white bonnet and shawl"
+          placeholder="e.g. long dark grey dress, white bonnet, shawl, lace collar, leather boots"
           rows={3}
         />
       </div>
