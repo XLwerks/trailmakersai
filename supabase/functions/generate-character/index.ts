@@ -7,12 +7,13 @@ const corsHeaders = {
 };
 
 function buildPrompt(fields: Record<string, string>): string {
-  const { clothingDescriptors, outfitDescriptionSentence } = fields;
+  const { timePeriod, roleOccupation, clothingDescriptors, outfitDescriptionSentence } = fields;
 
-  let prompt = `Using the uploaded reference image for facial likeness, generate a full-body, photorealistic image.
+  let prompt = `Using the uploaded reference image for facial likeness, generate a full-body, photorealistic image of a ${roleOccupation} from the ${timePeriod}.
 
 The character must:
 - Maintain consistent facial features from the reference image.
+- Be dressed authentically for a ${roleOccupation} of the ${timePeriod}.
 - Wear historically accurate clothing including: ${clothingDescriptors}.`;
 
   if (outfitDescriptionSentence) {
