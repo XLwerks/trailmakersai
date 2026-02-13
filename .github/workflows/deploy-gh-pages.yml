@@ -23,14 +23,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - uses: oven-sh/setup-bun@v2
         with:
-          node-version: 20
-          cache: npm
+          bun-version: latest
 
-      - run: npm ci
+      - run: bun install --frozen-lockfile
 
-      - run: npm run build
+      - run: bun run build
         env:
           VITE_SUPABASE_PROJECT_ID: "exloycfrdcwnuaxozavx"
           VITE_SUPABASE_PUBLISHABLE_KEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV4bG95Y2ZyZGN3bnVheG96YXZ4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA5MzQ1MDksImV4cCI6MjA4NjUxMDUwOX0.4WjPjlknJutbMMM7s6eMfqu8hxrBWd3qhTbJwb3mNs4"
