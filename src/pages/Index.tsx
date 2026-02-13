@@ -63,7 +63,7 @@ const Index = () => {
               Trailmakers Ai
             </h1>
             <p className="text-xs text-muted-foreground">
-              Worksheet 2 – Full Body Image
+              Worksheet 2 – Making a full character image
             </p>
           </div>
         </div>
